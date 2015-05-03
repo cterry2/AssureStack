@@ -1,0 +1,15 @@
+I":(function() {
+  var IncrementVote;
+
+  IncrementVote = function(answerid) {
+    return $.ajax({
+      url: "/issues/incrementvote?" + answerid,
+      dataType: "html",
+      success: function(data, textStatus, jqXHR) {
+        return $("#answer" + answerid).empty.append(data);
+      }
+    });
+  };
+
+}).call(this);
+:ET

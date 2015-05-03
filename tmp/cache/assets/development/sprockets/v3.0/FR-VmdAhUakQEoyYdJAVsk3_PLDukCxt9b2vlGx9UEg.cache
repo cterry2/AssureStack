@@ -1,0 +1,19 @@
+I"´(function() {
+  var IncrementVote;
+
+  IncrementVote = function(answerid) {
+    return $.ajax({
+      url: "/issues/incrementvote?" + answerid,
+      dataType: "html",
+      error: function(data, textStatus, jqXHR) {
+        return alert("it failed");
+      },
+      success: function(data, textStatus, jqXHR) {
+        alert("it worked!");
+        return $("#answer" + answerid).empty.append(data);
+      }
+    });
+  };
+
+}).call(this);
+:ET

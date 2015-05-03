@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_id: 1
+  username: MyString
+  answertext: MyText
+  score: 1
+
+two:
+  issue_id: 1
+  username: MyString
+  answertext: MyText
+  score: 1

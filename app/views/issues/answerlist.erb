@@ -1,0 +1,12 @@
+<div style="margin-top:45px;">answers</div>
+<table>
+<% @answer.each do |answer| %>
+    <tr>      
+      <td><%= answer.username %></td>
+      <td>
+        <%= answer.answertext %>
+      </td>
+      <td><%= answer.issue_id%></td>
+    </tr>
+  <% end %>
+  </table>

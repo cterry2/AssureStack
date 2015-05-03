@@ -1,0 +1,47 @@
+
+<div class="top-of-page">
+<h3>Welcome to AssureStack!</h3>
+<p>Your home for IT answers at Assurity Life Insurance.</p>
+</div>
+<% if current_user %>
+  <div style="display:block;margin:10px 0;">
+    <%=link_to "New Issue >>>", newIssue_path, {:style=>'color:blue;font-size:1.2em;font-weight:900;margin:10px 0;'} %>
+  </div>
+<% end %>
+
+
+<table style="width:90%;margin-left:5%;">
+  <tr>  	
+    <th style="width:60%;">Title</th>
+    <th style="width:15%;">Last Answerer</th>
+    <th style="width:5%;text-align:center;">Views</th>
+    <th style="width:5%;text-align:center;">Votes</th>
+    <th style="width:5%;text-align:center;">Answers</th>
+  </tr>
+ 
+  <% @issues.each do |issue| %>
+    <tr>      
+      <td><%= link_to issue.title, "#{issues_path}/#{issue.id}"%>
+        <div>Comments: <%= issue.issuecomment.all.count %></div> </td>
+      <td>
+        <% if issue.answer.size != 0 %>
+          <%= issue.answer.all.order(created_at: :desc).first.user.email %>
+        <% else %>
+          Not Answered Yet
+        <% end %>
+      </td>
+      <td style="text-align:center;"><%= issue.views %></td>
+      <td style="text-align:center;">
+        <% if issue.answer.size != 0 %>
+          <%= issue.answer.all.order(created_at: :desc).first.score %>
+        <% else %>
+          0
+        <% end %>
+      </td>
+      <td style="text-align:center;">          
+        <%= issue.answer.count %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

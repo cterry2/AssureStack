@@ -1,0 +1,20 @@
+I"Î(function() {
+  var IncrementVote;
+
+  IncrementVote = function(answerid) {
+    alert("ok");
+    return $.ajax({
+      url: "/issues/incrementvote?answerid=" + answerid,
+      dataType: "html",
+      error: function(data, textStatus, jqXHR) {
+        return alert("it failed");
+      },
+      success: function(data, textStatus, jqXHR) {
+        alert("it worked!");
+        return $("#answer" + answerid).empty.append(data);
+      }
+    });
+  };
+
+}).call(this);
+:ET

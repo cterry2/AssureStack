@@ -1,0 +1,19 @@
+<div class="top-of-page">
+	<h3>User: <%= @userinfo.email %></h2>
+</div>
+
+<div style="width:60%;display:inline-block;">
+	<h4>Stats:</h4>
+	<p>Issues Submitted: <%= @issues.count %></p>
+	<p>Answers Submitted: <%= @answers.count %></p>
+	<% if @answers.count > 0 %>
+		<p>Highest Number of Votes: <%= @answers.order(score: :desc).first.score %></p>
+		<p>Total Number of Votes: <%= @answers.sum(:score) %></p>
+	<% end %>
+</div>
+<div style="display:inline-block;width:39%;float:right;">
+	<h4>Things I know about:</h4>
+	<%= @keywords.each do | keyword | %>
+		<input id="<%= keyword.id %>" type="checkbox" /><%= keyword.word %><br>
+	<% end %>
+</div>
