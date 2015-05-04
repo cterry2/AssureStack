@@ -23,5 +23,21 @@ DecrementVote = function(answerid)
 		}).error(function(jqXHR, ajaxOptions, thrownError){
 			alert(jqXHR.status);
 			alert(thrownError);
-	});	
+	});
+}
+
+
+Changekeyword = function(keyid)
+{
+	alert(keyid);
+	$.ajax({
+		type: 'POST',
+		url: "/accountroles", 
+		data: { keywordid: keyid}
+		}).success(function(data) {			
+			alert("success");
+		}).error(function(jqXHR, ajaxOptions, thrownError){
+			alert(jqXHR.status);
+			alert(thrownError);
+	});
 }

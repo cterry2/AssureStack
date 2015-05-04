@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"  
   get "sign_up" => "user#new", :as => "sign_up"  
 
+  post "accountroles" => "user#updatekeywords", :as => "accountroles"
   get "account" => "user#accountinfo", :as => "account"
   post "upvote" => "issues#incrementvote", :as => "upvote"
   post "downvote" => "issues#decrementvote", :as => "downvote"

@@ -21,6 +21,22 @@ class UserController < ApplicationController
 		@keywords = Keyword.all
 	end
 
+	def updatekeywords
+		@roleuser = Userkeyword.all.where('keyword_id = ? and user_id = ?', params[:keywordid], session[:user_id])
+		if @roleuser.count == 0
+			@role = Userkeyword.new
+			@role.user_id = session[:user_id]
+			@role.keyword_id = params[:keywordid]
+			@role.save
+		else
+			Userkeyword.destroy(@roleuser.id)
+		end
+
+		respond_to do |format|
+  			format.json { render json: true }
+		end 
+	end
+
 	private
 		def user_params
 	  		params.require(:user).permit(:email, :password, :password_confirmation)
